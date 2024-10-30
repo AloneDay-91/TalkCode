@@ -1,5 +1,6 @@
 import './style.css';
 import { OBSWebSocket } from 'obs-websocket-js';
+import Lenis from 'lenis'
 
 const obs = new OBSWebSocket();
 
@@ -32,4 +33,51 @@ document.getElementById('toggleOverlay2').addEventListener('click', () => switch
 document.getElementById('toggleOverlay3').addEventListener('click', () => switchScene('DEBUT'));
 document.getElementById('toggleOverlay4').addEventListener('click', () => switchScene('FIN'));
 
+
 main();
+
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.classList.add('header-appear');
+        header.classList.remove('header-disappear');
+    } else {
+        header.classList.add('header-disappear');
+        header.classList.remove('header-appear');
+    }
+});
+
+// activer uniquement sur ordinateur
+if (window.innerWidth > 768) {
+    // Initialize Lenis
+    const lenis = new Lenis();
+
+// Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+}
+
+function showSnackbar() {
+    const snackbar = document.getElementById('snackbar');
+    snackbar.classList.remove('opacity-0'); // Affiche la snackbar
+    snackbar.classList.add('opacity-100');  // Transition d'opacité
+
+    // Cache la snackbar après 3 secondes
+    setTimeout(() => {
+        snackbar.classList.remove('opacity-100');
+        snackbar.classList.add('opacity-0');
+    }, 3000);
+}
+
+document.querySelectorAll('.btn-obs').forEach(button => {
+    button.addEventListener('click', () => {
+        const sceneName = button.getAttribute('data-scene');
+        switchScene(sceneName);  // Appelle la fonction de changement de scène
+        showSnackbar(`Transition vers la scène ${sceneName}`);
+    });
+});
