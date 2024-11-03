@@ -74,10 +74,26 @@ function showSnackbar() {
     }, 3000);
 }
 
-document.querySelectorAll('.btn-obs').forEach(button => {
+// Fonction pour gérer l'affichage unique du badge "Activer"
+function activateBadge(button) {
+    // Supprime tous les badges des autres boutons
+    document.querySelectorAll('.obs-btn .badge').forEach(badge => badge.remove());
+
+    // Ajoute le badge uniquement au bouton spécifié
+    let badge = document.createElement('span');
+    badge.classList.add('inline-flex', 'items-center', 'justify-center', 'rounded-full', 'bg-red-100', 'px-2', 'py-0.2', 'text-red-700', 'badge', 'absolute', 'top-0', 'right-0', 'mr-4', 'mt-4');
+    badge.innerHTML = '<p class="whitespace-nowrap text-xs flex items-center">' +
+        '<img class="w-5 h-5" src="https://cdn3.emoji.gg/emojis/9123_red_circle.png" alt=""/>' +
+    'LIVE</p>';
+    button.querySelector('span').appendChild(badge);
+}
+
+// Applique l'écouteur d'événement à tous les boutons de la classe `obs-btn`
+document.querySelectorAll('.obs-btn').forEach(button => {
     button.addEventListener('click', () => {
         const sceneName = button.getAttribute('data-scene');
-        switchScene(sceneName);  // Appelle la fonction de changement de scène
+        switchScene(sceneName);  // Change de scène
         showSnackbar(`Transition vers la scène ${sceneName}`);
+        activateBadge(button);   // Affiche le badge "Activer" uniquement sur ce bouton
     });
 });
