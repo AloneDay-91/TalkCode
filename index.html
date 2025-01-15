@@ -2,7 +2,7 @@
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Vite App</title>
@@ -11,8 +11,48 @@
 <div id="app" class="relative">
     <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_50%_350px,#bbf7d0a8,transparent)]"></div></div>
 
-    <div id="snackbar" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#0b2936] text-white font-light px-4 py-2 rounded-md opacity-0 transition-opacity duration-300">
-        Action effectuée avec succès !
+    <div  id="snackbar" role="alert" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 rounded-xl border border-gray-200 shadow bg-white p-4 z-50 transition-opacity duration-300 opacity-0">
+        <div class="flex items-start gap-4">
+    <span class="text-green-600">
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+      >
+        <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </span>
+
+            <div class="flex-1">
+                <strong class="block font-medium text-gray-900">Action effectuée</strong>
+
+                <p class="mt-1 text-sm text-gray-700">
+                    Votre action a été effectuée avec succès.
+                </p>
+            </div>
+
+            <button class="text-gray-500 transition hover:text-gray-600">
+                <span class="sr-only">Dismiss popup</span>
+
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
     </div>
 
 
@@ -20,7 +60,7 @@
         <div class="mx-auto flex py-5 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
             <a class="block text-black font-semibold flex items-center gap-2" href="/">
                 <div class="h-12 w-12 rounded bg-[#0b2936] flex items-center justify-center">
-                    <span class="font-semibold text-white">CT</span>
+                    <span class="font-semibold text-white p-1"><img src="/Logo.png" alt=""></span>
                 </div>
                 <span>CodeTalk</span>
             </a>
@@ -33,9 +73,6 @@
                         </li>
                         <li>
                             <a href="#scenes" class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:translate-y-1 after:bg-neutral-800 after:opacity-0 after:transition after:duration-150   after:ease-in-out hover:after:translate-y-0 hover:after:opacity-100">Scènes</a>
-                        </li>
-                        <li>
-                            <a href="#cameras" class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:translate-y-1 after:bg-neutral-800 after:opacity-0 after:transition after:duration-150   after:ease-in-out hover:after:translate-y-0 hover:after:opacity-100">Caméras</a>
                         </li>
                         <li>
                             <a href="#alertes" class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:translate-y-1 after:bg-neutral-800 after:opacity-0 after:transition after:duration-150   after:ease-in-out hover:after:translate-y-0 hover:after:opacity-100">Alertes</a>
@@ -56,6 +93,10 @@
                         <a href="https://github.com/AloneDay-91/obswstwitch" class="flex items-center gap-2 p-3 rounded-full hover:text-neutral-500 transition duration-500" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         </a>
+                    </div>
+
+                    <div class="sm:flex sm:gap-4">
+                        <button id="logoutButton" class="hidden group relative inline-flex p-2 items-center justify-end overflow-hidden rounded-md bg-red-300 px-6 font-normal text-sm text-red-900"><span>Déconnexion</span><div class="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-1 group-hover:opacity-100"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></button>
                     </div>
                 </div>
             </div>
@@ -83,112 +124,140 @@
             </div>
         </div>
         <br>
-        <h1 id="scenes" class="text-3xl mx-24 my-12 font-medium">Contrôle des scènes</h1>
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mx-24">
-            <button id="toggleOverlay1" data-scene="MAIN" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
+        <div id="block-content" class="hidden">
+            <h1 id="scenes" class="text-3xl mx-24 my-12 font-medium">Contrôle des scènes</h1>
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mx-24">
+                <button id="toggleOverlay1" data-scene="MAIN" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
+                    <div class="p-5 pb-0">
                     <span  class="font-semibold flex items-center justify-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-radio w-16 h-16"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg>
                     </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
+                    </div>
+                    <span class="font-semibold flex items-center justify-center gap-4 p-5">
                     Scène MAIN (LIVE)
                 </span>
-            </button>
-            <button id="toggleOverlay2" data-scene="PAUSE" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
+                </button>
+                <button id="toggleOverlay2" data-scene="PAUSE" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
+                    <div class="p-5 pb-0">
                     <span  class="font-semibold flex items-center justify-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pause w-16 h-16"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
                     </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
+                    </div>
+                    <span class="font-semibold flex items-center justify-center gap-4 p-5">
                     Scène PAUSE
                 </span>
-            </button>
-            <button id="toggleOverlay3" data-scene="DEBUT" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
+                </button>
+                <button id="toggleOverlay3" data-scene="DEBUT" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
+                    <div class="p-5 pb-0">
                     <span  class="font-semibold flex items-center justify-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv-minimal-play w-16 h-16"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z"/><path d="M7 21h10"/><rect width="20" height="14" x="2" y="3" rx="2"/></svg>
                     </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
+                    </div>
+                    <span class="font-semibold flex items-center justify-center gap-4 p-5">
                     Scène DEBUT
                 </span>
-            </button>
-            <button id="toggleOverlay4" data-scene="FIN" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
+                </button>
+                <button id="toggleOverlay4" data-scene="FIN" class="obs-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
+                    <div class="p-5 pb-0">
                     <span  class="font-semibold flex items-center justify-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor-x w-16 h-16"><path d="m14.5 12.5-5-5"/><path d="m9.5 12.5 5-5"/><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
                     </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
+                    </div>
+                    <span class="font-semibold flex items-center justify-center gap-4 p-5">
                     Scène FIN
                 </span>
-            </button>
-        </div>
-        <br>
-        <h1 id="cameras" class="text-3xl mx-24 my-12 font-medium">Contrôle des caméras</h1>
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mx-24">
-            <button class="camera-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
-                    <span  class="font-semibold flex items-center justify-center gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video w-16 h-16"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-                    </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
-                    Caméra 1
-                </span>
-            </button>
-            <button class="camera-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
-                    <span  class="font-semibold flex items-center justify-center gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video w-16 h-16"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-                    </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
-                    Caméra 2
-                </span>
-            </button>
-            <button class="camera-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
-                    <span  class="font-semibold flex items-center justify-center gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video w-16 h-16"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-                    </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
-                    Caméra 3
-                </span>
-            </button>
-            <button class="camera-btn rounded-xl bg-[#0b2936] border border-1 border-[#0b2936] text-white relative hover:opacity-80 transition duration-300">
-                <div class="p-5 pb-0">
-                    <span  class="font-semibold flex items-center justify-center gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video w-16 h-16"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-                    </span>
-                </div>
-                <span class="font-semibold flex items-center justify-center gap-4 p-5">
-                    Caméra 4
-                </span>
-            </button>
-        </div>
-        <br>
-        <h1 id="alertes" class="text-3xl mx-24 my-12 font-medium">Contrôle des alertes</h1>
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mx-24">
-            <button id="toggleOverlay1" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white">
+                </button>
+            </div>
+            <br>
+            <h1 id="alertes" class="text-3xl mx-24 my-12 font-medium">Contrôle des alertes</h1>
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mx-24">
+                <button id="toggleFollow" data-source="alert follow" data-scene="MAIN" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white hover:opacity-80 transition duration-300">
                 <span class="font-semibold flex items-center justify-center gap-4">
                     Followers
                 </span>
-            </button>
-            <button id="toggleOverlay2" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white">
+                </button>
+                <button id="toggleSub" data-source="alert sub" data-scene="MAIN" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white hover:opacity-80 transition duration-300">
                 <span class="font-semibold flex items-center justify-center gap-4">
                     Abonnements
                 </span>
-            </button>
-            <button id="toggleOverlay3" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white">
+                </button>
+                <button id="toggleDon" data-source="alert donation" data-scene="MAIN" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white hover:opacity-80 transition duration-300">
                 <span class="font-semibold flex items-center justify-center gap-4">
                     Donations
                 </span>
-            </button>
+                </button>
+                <button id="toggleUser" data-source="alert personne" data-scene="MAIN" class="overlay-btn h-24 rounded-full bg-[#0b2936] border border-1 border-[#0b2936] text-white hover:opacity-80 transition duration-300">
+                <span class="font-semibold flex items-center justify-center gap-4">
+                    Nom de la personne
+                </span>
+                </button>
+            </div>
         </div>
+
+
+        <div  id="block-login" class="flex items-center flex-row justify-center mx-24 mx-auto bg-white border border-gray-200 p-4 shadow-sm rounded-xl">
+            <div class="w-full flex items-start flex-col justify-center m-12 pr-20 border-r border-gray-200">
+                <h2 class="text-3xl font-semibold my-12">Comment ça marche ?</h2>
+                <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                    <li class="mb-10 ms-4">
+                        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                        <time class="mb-1 text-xl font-semibold leading-none">1ère étape</time>
+                        <h3 class="text-lg font-medium">Activer le websocket dans OBS</h3>
+                        <p class="mb-4 text-base font-sm">
+                            Initialiser le websocket dans OBS pour permettre la communication avec le site web. Ajouter un mot de passe pour sécuriser la connexion.
+                        </p>
+                    </li>
+                    <li class="mb-10 ms-4">
+                        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                        <time class="mb-1 text-xl font-semibold leading-none">2ème étape</time>
+                        <h3 class="text-lg font-medium">Connexion au websocket</h3>
+                        <p class="mb-4 text-base font-sm">
+                            Ensuite, il suffit de renseigner l'adresse IP, le port et le mot de passe pour se connecter au websocket d'OBS.
+                        </p>
+                    </li>
+                    <li class="mb-10 ms-4">
+                        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                        <time class="mb-1 text-xl font-semibold leading-none">3ème étape</time>
+                        <h3 class="text-lg font-medium">Utiliser les boutons</h3>
+                        <p class="mb-4 text-base font-sm">
+                            Enfin, il ne reste plus qu'à utiliser les boutons pour contrôler les scènes, transitions et alertes de votre diffusion en direct.
+                        </p>
+                    </li>
+                </ol>
+
+
+            </div>
+            <div class="w-full items-center justify-center">
+                <div id="alertError" class="opacity-0" role="alert"><p>test</p></div>
+                <h2 class="text-xl font-semibold mx-12 my-6">Connexion au websocket</h2>
+                <form action="" class="flex items-start justify-center flex-col w-auto mx-12 gap-5">
+                    <div class="flex w-auto w-full flex-row justify-between gap-2">
+                        <div class="w-full">
+                            <label for="ip" class="sr-only">Adresse IP</label>
+                            <div class="relative">
+                                <input type="text" name="ip" id="ip" class="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Votre adresse IP">
+                            </div>
+                        </div>
+                        <div class="w-full">
+                            <label for="port" class="sr-only">Port</label>
+                            <div class="relative">
+                                <input type="number" name="port" id="port" class="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Votre port">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start flex-col w-full">
+                        <div class="w-full">
+                            <label for="mdp" class="sr-only">Votre mot de passe</label>
+                            <div class="relative">
+                                <input type="text" name="mdp" id="mdp" class="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Votre mot de passe">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#0b2936] px-6 font-medium text-neutral-200"><span>Se connecter</span><div class="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-1 group-hover:opacity-100"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></button>
+                </form>
+            </div>
+        </div>
+
     </div>
     <footer class="mt-24">
         <div class="bg-transparent text-neutral-500 text-center py-4">
@@ -199,23 +268,3 @@
 <script type="module" src="/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
